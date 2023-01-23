@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Liste des Photos
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h2>
+			Les photos
+		</h2>
+		<div class="row flex">
+			{% for photo in photos %}
+				<div class="col-3">
+					<div class="card">
+						<img class="card-img-top" src="{{ asset('assets/photos/empty.jpg') }}" alt="img defaut">
+						<div class="card-boby">
+							<h5 class="card-title">
+								<a href="">
+									{{ photo.title }}
+								</a>
+							</h5>
+							<h5>
+								Postée par : un internaute
+							</h5>
+							<p class="card-text">
+								Postée le :
+								{{ photo.postAt }}
+							</p>
+							<div class="text-primary" style="font-weight: bold; font-size: 1.2rem;">
+								commentaires : 0
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+{% endblock %}
