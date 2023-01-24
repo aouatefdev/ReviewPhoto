@@ -24,16 +24,40 @@
 
 
 	<body>
+		<header class="jumbotron text-center">
+			<div class="row">
+				<div class="col-8">
+					<h1>
+						Commenter des photos
+					</h1>
+				</div>
+				<div class="col-4">
+					<h5>
+						Date :
+						{{ "now"|date("d/m/Y") }}
+					</h5>
+					{% block connexion %}
+						{% if not app.user %}
+							<a href="{{ path("app_login") }}" class="btn btn-primary">
+								Se connecter
+							</a>
+						{% else %}
+							<h4>
+								Bienvenue :
+								{{ app.user.pseudo }}
+							</h4>
+							<a href="{{ path('app_logout') }}" class="btn btn-secondary">
+								Se déconnecter
+							</a>
+						{% endif %}
+					{% endblock %}
+				</div>
+			</div>
+		</header>
+
 		<nav class="navbar navbar-dark bg-dark mb-2">
-			<a class="navbar-brand" href="{{ path("photo.list") }}">
-				Home
-			</a>
+			<a class="navbar-brand" href="{{ path("photo.list") }}">Home</a>
 		</nav>
-		<div class="jumbotron text-center mb-0">
-			<h1>
-				Commenter des photos
-			</h1>
-		</div>
 
 		{% block body %}
 		{% endblock %}
